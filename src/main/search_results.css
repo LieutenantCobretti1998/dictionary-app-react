@@ -1,0 +1,123 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 60px;
+}
+.main__searchWord {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main__searchWord__heading {
+  font-size: 6.4rem;
+  color: var(--main-color);
+}
+.main__searchWord__prononciation {
+  font-size: 2.4rem;
+  color: var(--main-color);
+}
+.main__searchWord svg {
+  cursor: pointer;
+  transition: transform 0.3s ease, fill 10s ease;
+}
+.main__searchWord svg:hover {
+  transform: scale(1.2);
+}
+.main__searchWord svg:hover g {
+  fill: var(--icon-fill);
+}
+.main__searchWord svg:hover g path {
+  fill: var(--icon-play);
+}
+.main__searchWord svg:active {
+  transform: scale(0.8);
+}
+.main__description {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.main__description__container {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.main__description__container__meaning {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.main__description__container__meaning__header {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+.main__description__container__meaning__explanation {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.main__description__container__meaning__explanation__meaning {
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--grey-meaning);
+}
+.main__description__container__meaning__explanation__examples {
+  padding-left: 5.5rem;
+}
+.main__description__container__meaning__explanation__examples li:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.main__description__container__meaning__explanation__examples li {
+  color: var(--main-color);
+  font-size: 1.8rem;
+}
+.main__description__container__meaning__explanation__examples li::marker {
+  color: var(--search-border-color);
+}
+.main__description__container__meaning__synonyms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+.main__description__container__meaning__synonyms h4 {
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--grey-meaning);
+}
+.main__description__container__meaning__synonyms p {
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--synonyms-color);
+}
+.main__description__line {
+  width: 100%;
+  height: 0.5px;
+  background-color: rgba(151, 151, 151, 0.5);
+}
+.main__description__header {
+  font-size: 2.4rem;
+  color: var(--main-color);
+}
+.main__description__source {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+.main__description__source h4 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: var(--grey-meaning);
+}
+.main__description__source a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  color: var(--main-color);
+}
+
+/*# sourceMappingURL=search_results.css.map */

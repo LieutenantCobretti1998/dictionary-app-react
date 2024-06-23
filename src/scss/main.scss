@@ -1,0 +1,56 @@
+@import "base/variables.scss";
+
+:root {
+  --font-family: 'Inter', sans-serif;
+  --background-color: #{$color-white};
+  --main-color: #{$color-black};
+  --search-border-color: #{$color-purple};
+  --search-background-color: #{$color-white-dark};
+  --search-text-color: #{$color-black};
+  --dark-mode-icon: #{$color-grey};
+  --line-color: #{$color-light-grey};
+  --icon-fill: #{$color-dark-purple};
+  --icon-play: #{$color-white};
+  --synonyms-color: #{$color-purple};
+  --grey-meaning: #{$color-grey};
+}
+
+[data-theme="dark"] {
+  --background-color: #{$color-black};
+  --main-color:#{$color-white};
+  --search-border-color: #{$color-white};
+  --search-background-color: #{$color-black-3};
+  --search-text-color: #{$color-white};
+  --dark-mode-icon: #{$color-purple};
+}
+
+
+*,
+*::after,
+*::before {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+#root {
+  max-width: 700px;
+  margin-inline: auto;
+}
+

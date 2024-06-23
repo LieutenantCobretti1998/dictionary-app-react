@@ -1,0 +1,147 @@
+@mixin grey-color($alpha) {
+  background-color: rgba(151, 151, 151, $alpha);;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 60px;
+
+  &__searchWord {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__heading {
+      font-size: 6.4rem;
+      color: var(--main-color);
+    }
+
+    &__prononciation {
+      font-size: 2.4rem;
+      color: var(--main-color);
+    }
+
+    & svg {
+      cursor: pointer;
+      transition: transform 0.3s ease, fill 10s ease;
+
+      &:hover {
+        transform: scale(1.2);
+        //transition: fill 10s ease-in-out;
+         & g {
+          fill: var(--icon-fill);
+
+           & path {
+             fill: var(--icon-play);
+           }
+        }
+      }
+
+      &:active {
+        transform: scale(.8);
+      }
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+
+      &__meaning {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        &__header {
+          display: flex;
+          align-items: center;
+          gap: 3.5rem;
+        }
+        &__explanation {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          &__meaning {
+            font-size: 2rem;
+            font-weight: normal;
+            color: var(--grey-meaning);
+          }
+
+          &__examples {
+            padding-left: 5.5rem;
+            li:not(:last-child) {
+              margin-bottom: 2rem;
+            }
+
+            li {
+              color: var(--main-color);
+              font-size: 1.8rem;
+
+              &::marker {
+                color: var(--search-border-color);
+              }
+            }
+          }
+        }
+
+        &__synonyms {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 2rem;
+          h4 {
+            font-size: 2rem;
+            font-weight: normal;
+            color: var(--grey-meaning);
+          }
+
+          p {
+            font-size: 2rem;
+            font-weight: normal;
+            color: var(--synonyms-color);
+          }
+        }
+      }
+    }
+
+    &__line {
+      width: 100%;
+      height: .5px;
+      @include grey-color(0.5);
+
+    }
+    &__header {
+      font-size: 2.4rem;
+      color: var(--main-color);
+    }
+
+    &__source {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 5rem;
+
+      h4 {
+        font-size: 1.4rem;
+        font-weight: normal;
+        color: var(--grey-meaning);
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.4rem;
+        color: var(--main-color);
+      }
+    }
+  }
+}
+

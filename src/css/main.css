@@ -1,0 +1,53 @@
+:root {
+  --font-family: "Inter", sans-serif;
+  --background-color: #FFFFFF;
+  --main-color: #050505;
+  --search-border-color: #AA45ED;
+  --search-background-color: #F4F4F4;
+  --search-text-color: #050505;
+  --dark-mode-icon: #757575;
+  --line-color: #979797;
+  --icon-fill: hsl(328, 98%, 49%);
+  --icon-play: #FFFFFF;
+  --synonyms-color: #AA45ED;
+  --grey-meaning: #757575;
+}
+
+[data-theme=dark] {
+  --background-color: #050505;
+  --main-color:#FFFFFF;
+  --search-border-color: #FFFFFF;
+  --search-background-color: #2D2D2D;
+  --search-text-color: #FFFFFF;
+  --dark-mode-icon: #AA45ED;
+}
+
+*,
+*::after,
+*::before {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+#root {
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+/*# sourceMappingURL=main.css.map */
