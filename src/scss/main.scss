@@ -13,6 +13,8 @@
   --icon-play: #{$color-white};
   --synonyms-color: #{$color-purple};
   --grey-meaning: #{$color-grey};
+  --loader: #{$color-purple};
+  --purple-error: #{$color-purple};
 }
 
 [data-theme="dark"] {
@@ -32,6 +34,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
 
 html {
@@ -47,6 +50,7 @@ html {
 
 body {
   background-color: var(--background-color);
+  transition: background-color 0.3s ease;
 }
 
 #root {

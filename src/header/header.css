@@ -171,4 +171,9 @@
   pointer-events: none;
 }
 
+.add-word {
+  width: 20px;
+  height: 20px;
+}
+
 /*# sourceMappingURL=header.css.map */

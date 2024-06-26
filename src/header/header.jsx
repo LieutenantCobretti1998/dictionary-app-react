@@ -79,38 +79,53 @@ function Header({onSearch}) {
                             <path d="M11 9h12"/>
                         </g>
                     </svg>
-                    <div className="header__mode-setter">
-                        <div>
-                            <button type="button" className="header__mode-setter__font-style" onClick={toggleMenu}>
-                                <p>{currentFont}</p>
-                                <svg className={`header__style-settings__icon ${isMenuOpen ? "rotate": ""}`} xmlns="http://www.w3.org/2000/svg" width="14"
-                                     height="8" viewBox="0 0 14 8">
-                                    <path fill="none" stroke="#A445ED" strokeWidth="1.5" d="m1 1 6 6 6-6"/>
-                                </svg>
-                            </button>
-                            <div ref={menuRef} className={`font-subMenu ${isMenuOpen ? "visible" : ""}`}>
-                                <button type="button" className={currentFont === "Serif" ? "focused": ""} onClick={() => fontChange("Serif")}>Serif</button>
-                                <button type="button" className={currentFont === "Sans Serif" ? "focused": ""} onClick={() => fontChange("Sans Serif")}>Sans Serif</button>
-                                <button type="button" className={currentFont === "Mono" ? "focused": ""} onClick={() => fontChange("Mono")}>Mono</button>
-                            </div>
-                        </div>
-                        <div className="header__mode-setter__line"></div>
-                        <div className="header__night-mode">
-                            <label className="switch round" htmlFor="switch-mode">
-                                <input id="switch-mode" placeholder="" type="checkbox" onChange={toggleDarkMode} checked={darkMode}/>
-                                <span className="slider round"></span>
-                            </label>
-                            <svg className="header__icon" xmlns="http://www.w3.org/2000/svg" width="22"
-                                 height="22" viewBox="0 0 22 22">
-                                <path fill="none" stroke="#838383" strokeLinecap="round" strokeLinejoin="round"
-                                      strokeWidth="1.5"
-                                      d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/>
+                <div className="header__mode-setter">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="add-word" viewBox="0 0 512 512">
+                        <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none"
+                              stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="32" d="M256 176v160M336 256H176"/>
+                    </svg>
+                    <div>
+                        <button type="button" className="header__mode-setter__font-style" onClick={toggleMenu}>
+                            <p>{currentFont}</p>
+                            <svg className={`header__style-settings__icon ${isMenuOpen ? "rotate" : ""}`}
+                                 xmlns="http://www.w3.org/2000/svg" width="14"
+                                 height="8" viewBox="0 0 14 8">
+                                <path fill="none" stroke="#A445ED" strokeWidth="1.5" d="m1 1 6 6 6-6"/>
                             </svg>
+                        </button>
+                        <div ref={menuRef} className={`font-subMenu ${isMenuOpen ? "visible" : ""}`}>
+                            <button type="button" className={currentFont === "Serif" ? "focused" : ""}
+                                    onClick={() => fontChange("Serif")}>Serif
+                            </button>
+                            <button type="button" className={currentFont === "Sans Serif" ? "focused" : ""}
+                                    onClick={() => fontChange("Sans Serif")}>Sans Serif
+                            </button>
+                            <button type="button" className={currentFont === "Mono" ? "focused" : ""}
+                                    onClick={() => fontChange("Mono")}>Mono
+                            </button>
                         </div>
                     </div>
+                    <div className="header__mode-setter__line"></div>
+                    <div className="header__night-mode">
+                        <label className="switch round" htmlFor="switch-mode">
+                            <input id="switch-mode" placeholder="" type="checkbox" onChange={toggleDarkMode}
+                                   checked={darkMode}/>
+                            <span className="slider round"></span>
+                        </label>
+                        <svg className="header__icon" xmlns="http://www.w3.org/2000/svg" width="22"
+                             height="22" viewBox="0 0 22 22">
+                            <path fill="none" stroke="#838383" strokeLinecap="round" strokeLinejoin="round"
+                                  strokeWidth="1.5"
+                                  d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
             <div className="header__search">
-                <input ref={inputRef}  type="text" className="header__search__input" autoFocus placeholder="Search word and its explanation"/>
+                <input ref={inputRef} type="text" className="header__search__input" autoFocus
+                       placeholder="Search word and its explanation"/>
             </div>
         </header>
     )
