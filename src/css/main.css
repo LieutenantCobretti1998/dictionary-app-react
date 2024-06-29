@@ -13,6 +13,7 @@
   --grey-meaning: #757575;
   --loader: #AA45ED;
   --purple-error: #AA45ED;
+  --fill-add-button: #AA45ED;
 }
 
 [data-theme=dark] {

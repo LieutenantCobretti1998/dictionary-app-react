@@ -195,6 +195,13 @@
 }
 
 .add-word {
+  cursor: pointer;
   width: 20px;
   height: 20px;
+  color: var(--main-color);
+  transition: color ease-in .2s;
+
+  &:hover {
+    color: var(--fill-add-button);
+  }
 }

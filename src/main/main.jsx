@@ -1,17 +1,23 @@
 import "./search_results.css";
-import {useRef} from "react";
+import {useContext, useEffect, useRef} from "react";
+import {DataContext} from "../context/data_context.jsx";
 
 
 // eslint-disable-next-line react/prop-types
 export default function SearchResults({apiResponse}) {
-    if (apiResponse) {
-        console.log(apiResponse)
-    }
+    let localData = new Object();
+    localData.word = "";
+    localData.pronunciation = "";
+    localData.meanings = [];
+    localData.url = "";
+
+    const {setData} = useContext(DataContext);
 
     const audioRef = useRef(null);
     const entry = apiResponse[0];
     let meanings;
     meanings = apiResponse.flatMap(entry => entry.meanings || []);
+    console.log(meanings);
     // Define helper functions to check if properties exist
     const isText = property => property.text;
     const isAudio = property => property.audio && property.audio.trim() !== "";
@@ -28,6 +34,15 @@ export default function SearchResults({apiResponse}) {
     // Use find to get the object and then access the audio property
     let audioUrl;
     audioUrl = apiResponse.flatMap(entry => entry.phonetics || []).find(isAudio)?.audio;
+
+    useEffect(() => {
+        localData.word = entry.word;
+        localData.pronunciation = textPhonetic;
+        localData.meanings = meanings;
+        localData.url = sourceUrl;
+        console.log(localData);
+        setData(localData);
+    }, []);
 
     return (
         <main className="main">

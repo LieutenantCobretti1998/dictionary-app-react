@@ -3,6 +3,7 @@ import {useState} from "react";
 import SearchResults from "./main/main.jsx"
 import Loading from "./loading/loading.jsx";
 import Error from "./error/error.jsx";
+import {DataContextProvider} from "./context/data_context.jsx";
 function App() {
     const [apiResponse, setApiResponse] = useState(null);
     const [success, setSuccess] = useState(false);
@@ -32,12 +33,14 @@ function App() {
     };
 
   return (
-    <>
-      <Header onSearch={handleSearch}/>
-        {loading ? <Loading />: null}
-        {success && apiResponse ? <SearchResults apiResponse={apiResponse} /> : null}
-        {error ? <Error/> : null}
-    </>
+      <DataContextProvider>
+        <>
+          <Header onSearch={handleSearch}/>
+            {loading ? <Loading />: null}
+            {success && apiResponse ? <SearchResults apiResponse={apiResponse} /> : null}
+            {error ? <Error/> : null}
+        </>
+      </DataContextProvider>
   )
 }
 

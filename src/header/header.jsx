@@ -1,7 +1,17 @@
 import "./header.css";
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import useDarkMode from "../customHooks/darkmode.jsx";
+import {DataContext} from "../context/data_context.jsx";
+// eslint-disable-next-line react/prop-types
 function Header({onSearch}) {
+
+    const {data, saveLocalStorage} = useContext(DataContext);
+
+    const handleClick = () => {
+        if (data) {
+            saveLocalStorage(data);
+        }
+    }
     // use state for app functioning
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentFont, setCurrentFont] = useState("Serif");
@@ -12,7 +22,6 @@ function Header({onSearch}) {
         event.stopPropagation();
         setIsMenuOpen(!isMenuOpen);
     }
-
     function fontChange(font) {
         const root = document.documentElement;
         setCurrentFont(font);
@@ -80,11 +89,11 @@ function Header({onSearch}) {
                         </g>
                     </svg>
                 <div className="header__mode-setter">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="add-word" viewBox="0 0 512 512">
+                    <svg onClick={handleClick} xmlns="http://www.w3.org/2000/svg" className="add-word" viewBox="0 0 512 512">
                         <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none"
-                              stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
-                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                              stroke-width="32" d="M256 176v160M336 256H176"/>
+                              stroke="currentColor" strokeMiterlimit="10" strokeWidth="32"/>
+                        <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                              strokeWidth="32" d="M256 176v160M336 256H176"/>
                     </svg>
                     <div>
                         <button type="button" className="header__mode-setter__font-style" onClick={toggleMenu}>

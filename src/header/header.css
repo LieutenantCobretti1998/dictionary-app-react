@@ -172,8 +172,14 @@
 }
 
 .add-word {
+  cursor: pointer;
   width: 20px;
   height: 20px;
+  color: var(--main-color);
+  transition: color ease-in 0.2s;
+}
+.add-word:hover {
+  color: var(--fill-add-button);
 }
 
 /*# sourceMappingURL=header.css.map */
