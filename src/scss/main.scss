@@ -16,6 +16,7 @@
   --loader: #{$color-purple};
   --purple-error: #{$color-purple};
   --fill-add-button: #{$color-purple};
+  --save-button: #{$color-black};
 }
 
 [data-theme="dark"] {
@@ -25,6 +26,7 @@
   --search-background-color: #{$color-black-3};
   --search-text-color: #{$color-white};
   --dark-mode-icon: #{$color-purple};
+  --save-button: #{$color-white};
 }
 
 

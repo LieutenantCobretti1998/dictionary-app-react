@@ -1,15 +1,21 @@
 import "./header.css";
+import "../css/main.css";
 import {useContext, useEffect, useRef, useState} from "react";
 import useDarkMode from "../customHooks/darkmode.jsx";
 import {DataContext} from "../context/data_context.jsx";
 // eslint-disable-next-line react/prop-types
 function Header({onSearch}) {
 
-    const {data, saveLocalStorage} = useContext(DataContext);
+    const {data, saveLocalStorage, checkIsWordSaved, isWordSafe, unsaveWord} = useContext(DataContext);
 
     const handleClick = () => {
         if (data) {
-            saveLocalStorage(data);
+            if (isWordSafe.some(item => item.word === data.word)) {
+                unsaveWord(data);
+            } else {
+                saveLocalStorage(data);
+            }
+
         }
     }
     // use state for app functioning
@@ -60,7 +66,7 @@ function Header({onSearch}) {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, []);
+    }, [onSearch]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -89,12 +95,13 @@ function Header({onSearch}) {
                         </g>
                     </svg>
                 <div className="header__mode-setter">
-                    <svg onClick={handleClick} xmlns="http://www.w3.org/2000/svg" className="add-word" viewBox="0 0 512 512">
-                        <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none"
-                              stroke="currentColor" strokeMiterlimit="10" strokeWidth="32"/>
-                        <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                              strokeWidth="32" d="M256 176v160M336 256H176"/>
-                    </svg>
+                    {data !==null && (
+                        <svg onClick={handleClick} xmlns="http://www.w3.org/2000/svg" className="add-word" viewBox="0 0 512 512">
+                            <path d="M352 48H160a48 48 0 00-48 48v368l144-128 144 128V96a48 48 0 00-48-48z" fill={data ? (checkIsWordSaved(data.word || isWordSafe) ? "var(--save-button)" : "none") : "none"}
+                                  stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32"/>
+                        </svg>
+
+                    )}
                     <div>
                         <button type="button" className="header__mode-setter__font-style" onClick={toggleMenu}>
                             <p>{currentFont}</p>

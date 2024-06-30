@@ -14,6 +14,7 @@
   --loader: #AA45ED;
   --purple-error: #AA45ED;
   --fill-add-button: #AA45ED;
+  --save-button: #050505;
 }
 
 [data-theme=dark] {
@@ -23,6 +24,7 @@
   --search-background-color: #2D2D2D;
   --search-text-color: #FFFFFF;
   --dark-mode-icon: #AA45ED;
+  --save-button: #FFFFFF;
 }
 
 *,

@@ -1,14 +1,15 @@
 import Header from "./header/header.jsx";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import SearchResults from "./main/main.jsx"
 import Loading from "./loading/loading.jsx";
 import Error from "./error/error.jsx";
-import {DataContextProvider} from "./context/data_context.jsx";
+import {DataContext} from "./context/data_context.jsx";
 function App() {
     const [apiResponse, setApiResponse] = useState(null);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const {setData} = useContext(DataContext);
     const handleSearch = async (word) => {
         setLoading(true);
         setSuccess(false); // Reset success to false at start of new search
@@ -25,6 +26,7 @@ function App() {
             setApiResponse(data);
             setSuccess(true);
         } catch (error) {
+            setData(null);
             setError(true);
             setSuccess(false); // Explicitly handle error case for clarity
         } finally {
@@ -33,14 +35,12 @@ function App() {
     };
 
   return (
-      <DataContextProvider>
         <>
           <Header onSearch={handleSearch}/>
             {loading ? <Loading />: null}
             {success && apiResponse ? <SearchResults apiResponse={apiResponse} /> : null}
             {error ? <Error/> : null}
         </>
-      </DataContextProvider>
   )
 }
 

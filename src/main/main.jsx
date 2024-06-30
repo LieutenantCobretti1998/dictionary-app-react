@@ -5,19 +5,12 @@ import {DataContext} from "../context/data_context.jsx";
 
 // eslint-disable-next-line react/prop-types
 export default function SearchResults({apiResponse}) {
-    let localData = new Object();
-    localData.word = "";
-    localData.pronunciation = "";
-    localData.meanings = [];
-    localData.url = "";
-
     const {setData} = useContext(DataContext);
 
     const audioRef = useRef(null);
     const entry = apiResponse[0];
     let meanings;
     meanings = apiResponse.flatMap(entry => entry.meanings || []);
-    console.log(meanings);
     // Define helper functions to check if properties exist
     const isText = property => property.text;
     const isAudio = property => property.audio && property.audio.trim() !== "";
@@ -36,13 +29,13 @@ export default function SearchResults({apiResponse}) {
     audioUrl = apiResponse.flatMap(entry => entry.phonetics || []).find(isAudio)?.audio;
 
     useEffect(() => {
+        let localData = new Object();
         localData.word = entry.word;
         localData.pronunciation = textPhonetic;
         localData.meanings = meanings;
         localData.url = sourceUrl;
-        console.log(localData);
         setData(localData);
-    }, []);
+    }, [apiResponse]);
 
     return (
         <main className="main">
