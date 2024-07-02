@@ -4,12 +4,14 @@ import SearchResults from "./main/main.jsx"
 import Loading from "./loading/loading.jsx";
 import Error from "./error/error.jsx";
 import {DataContext} from "./context/data_context.jsx";
+import SavedWords from "./saved_words/saved_words.jsx";
 function App() {
     const [apiResponse, setApiResponse] = useState(null);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const {setData} = useContext(DataContext);
+    const [showSavedWords, setShowSavedWords] = useState(false);
+    const {setData, savedWords} = useContext(DataContext);
     const handleSearch = async (word) => {
         setLoading(true);
         setSuccess(false); // Reset success to false at start of new search
@@ -18,6 +20,7 @@ function App() {
         try {
             setError(false);
             setLoading(true);
+            setShowSavedWords(false);
             const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
@@ -33,12 +36,15 @@ function App() {
             setLoading(false);
         }
     };
+    const handleToggle = () => {
+        setShowSavedWords(!showSavedWords);
+    }
 
   return (
         <>
-          <Header onSearch={handleSearch}/>
+          <Header onSearch={handleSearch} onToggle={handleToggle}/>
             {loading ? <Loading />: null}
-            {success && apiResponse ? <SearchResults apiResponse={apiResponse} /> : null}
+            {showSavedWords ? <SavedWords savedWords={savedWords} onSearch={handleSearch} /> : (success && apiResponse ? <SearchResults apiResponse={apiResponse} /> : null)}
             {error ? <Error/> : null}
         </>
   )

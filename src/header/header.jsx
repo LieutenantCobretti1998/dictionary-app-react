@@ -4,7 +4,7 @@ import {useContext, useEffect, useRef, useState} from "react";
 import useDarkMode from "../customHooks/darkmode.jsx";
 import {DataContext} from "../context/data_context.jsx";
 // eslint-disable-next-line react/prop-types
-function Header({onSearch}) {
+function Header({onSearch, onToggle}) {
 
     const {data, saveLocalStorage, checkIsWordSaved, isWordSafe, unsaveWord} = useContext(DataContext);
 
@@ -87,7 +87,7 @@ function Header({onSearch}) {
     return (
         <header className="header">
             <div className="header__settings">
-                <svg className="header__icon" xmlns="http://www.w3.org/2000/svg" width="34" height="38" viewBox="0 0 34 38">
+                <svg onClick={onToggle} className="header__icon" xmlns="http://www.w3.org/2000/svg" width="34" height="38" viewBox="0 0 34 38">
                     <g fill="none" fillRule="evenodd" stroke="#838383" strokeLinecap="round" strokeWidth="1.5">
                             <path d="M1 33V5a4 4 0 0 1 4-4h26.8A1.2 1.2 0 0 1 33 2.2v26.228M5 29h28M5 37h28"/>
                             <path strokeLinejoin="round" d="M5 37a4 4 0 1 1 0-8"/>

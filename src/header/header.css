@@ -5,6 +5,9 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.header__icon {
+  cursor: pointer;
+}
 .header__icon path {
   stroke: var(--dark-mode-icon);
 }

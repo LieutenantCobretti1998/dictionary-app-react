@@ -40,12 +40,23 @@ export const DataContextProvider = ({children}) => {
         localStorage.setItem('local', JSON.stringify(updatedWords));
         setIsWordSafe(updatedWords);
     }
+
+    const savedWords = () => {
+        let existingData = localStorage.getItem("local");
+        if (existingData) {
+            existingData = JSON.parse(existingData);
+            const words = existingData.map(object => object.word);
+            return words
+        }
+        return null;
+    }
+
     useEffect(() => {
         createLocalStorage();
     }, []);
 
     return (
-        <DataContext.Provider value={{data, setData, saveLocalStorage, checkIsWordSaved,unsaveWord, isWordSafe, setIsWordSafe}}>{children}</DataContext.Provider>
+        <DataContext.Provider value={{data, setData, saveLocalStorage, checkIsWordSaved,unsaveWord, isWordSafe, setIsWordSafe, savedWords}}>{children}</DataContext.Provider>
     )
 
 }
