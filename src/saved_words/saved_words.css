@@ -1,0 +1,26 @@
+.saved-words {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 2.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.saved-words__title {
+  color: var(--main-color);
+  font-size: 4rem;
+}
+
+.list {
+  align-self: start;
+  list-style: none;
+}
+.list > li {
+  font-size: 3rem;
+  color: var(--main-color);
+}
+.list > li:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+/*# sourceMappingURL=saved_words.css.map */
