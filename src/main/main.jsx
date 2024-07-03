@@ -4,7 +4,7 @@ import {DataContext} from "../context/data_context.jsx";
 
 
 // eslint-disable-next-line react/prop-types
-export default function SearchResults({apiResponse}) {
+export default function SearchResults({apiResponse, onSearch}) {
     const {setData} = useContext(DataContext);
 
     const audioRef = useRef(null);
@@ -78,7 +78,7 @@ export default function SearchResults({apiResponse}) {
                                             Synonyms
                                         </h4>
                                         {element.synonyms.map((synonym, index) => (
-                                            <p key={index}>{synonym}</p>
+                                            <p onClick={() => onSearch(synonym)} key={index}>{synonym}</p>
                                         ))}
                                     </div>
                                 )}
@@ -88,7 +88,7 @@ export default function SearchResults({apiResponse}) {
                                             Antonyms
                                         </h4>
                                         {element.antonyms.map((antonym, index) => (
-                                            <p key={index}>{antonym}</p>
+                                            <p onClick={() => onSearch(antonym)} key={index}>{antonym}</p>
                                         ))}
                                     </div>
                                 )}
