@@ -6,7 +6,7 @@ import {DataContext} from "../context/data_context.jsx";
 // eslint-disable-next-line react/prop-types
 export default function SearchResults({apiResponse, onSearch}) {
     const {setData} = useContext(DataContext);
-
+    console.log("render main");
     const audioRef = useRef(null);
     const entry = apiResponse[0];
     let meanings;

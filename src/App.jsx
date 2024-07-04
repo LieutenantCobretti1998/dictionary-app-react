@@ -11,7 +11,16 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [showSavedWords, setShowSavedWords] = useState(false);
-    const {setData, savedWords} = useContext(DataContext);
+    const {setData, savedWords, isWordSafe, deleteWord} = useContext(DataContext);
+
+    const removeWord = (event, word) => {
+        console.log(event);
+        event.stopPropagation();
+        if (isWordSafe.some(item => item.word === word)) {
+            deleteWord(word);
+            }
+    }
+    console.log("render app");
     const handleSearch = async (word) => {
         setLoading(true);
         setSuccess(false); // Reset success to false at start of new search
@@ -44,7 +53,7 @@ function App() {
         <>
           <Header onSearch={handleSearch} onToggle={handleToggle}/>
             {loading ? <Loading />: null}
-            {showSavedWords ? <SavedWords savedWords={savedWords} onSearch={handleSearch} /> : (success && apiResponse ? <SearchResults apiResponse={apiResponse} onSearch={handleSearch} /> : null)}
+            {showSavedWords ? <SavedWords savedWords={savedWords} onSearch={handleSearch} onDelete={removeWord} /> : (success && apiResponse ? <SearchResults apiResponse={apiResponse} onSearch={handleSearch} /> : null)}
             {error ? <Error/> : null}
         </>
   )
