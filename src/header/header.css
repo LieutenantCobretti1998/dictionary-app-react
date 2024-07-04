@@ -7,6 +7,10 @@
 }
 .header__icon {
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.header__icon:hover {
+  transform: translateY(-2.5px);
 }
 .header__icon path {
   stroke: var(--dark-mode-icon);

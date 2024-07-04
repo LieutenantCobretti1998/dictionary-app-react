@@ -1,6 +1,7 @@
 import "./saved_words.css";
-export default function SavedWords({savedWords, onSearch}) {
+export default function SavedWords({savedWords, onSearch, onDelete}) {
     const words = savedWords();
+    console.log("render saved words")
     if(words.length > 0) {
         return (
             <div className="saved-words">
@@ -9,7 +10,7 @@ export default function SavedWords({savedWords, onSearch}) {
                 {words.map((word, i) => (
                     <li onClick={() => onSearch(word)} key={i}>
                         <p>{word}</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512">
+                        <svg onClick={(event) => {onDelete(event, word)}} xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512">
                             <path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320"
                                   fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
                                   strokeWidth="32"/>

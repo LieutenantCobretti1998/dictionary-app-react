@@ -7,7 +7,7 @@ import {DataContext} from "../context/data_context.jsx";
 function Header({onSearch, onToggle}) {
 
     const {data, saveLocalStorage, checkIsWordSaved, isWordSafe, unsaveWord} = useContext(DataContext);
-    console.log(data);
+    console.log("render header");
     const handleClick = () => {
         if (data) {
             if (isWordSafe.some(item => item.word === data.word)) {

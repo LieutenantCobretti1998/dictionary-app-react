@@ -8,6 +8,10 @@
 
   &__icon {
     cursor: pointer;
+    transition: transform .2s ease-in-out;
+    &:hover {
+      transform: translateY(-2.5px);
+    }
     & path {
       stroke: var(--dark-mode-icon);
     }
