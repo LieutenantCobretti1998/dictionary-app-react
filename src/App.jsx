@@ -54,7 +54,7 @@ function App() {
           <Header onSearch={handleSearch} onToggle={handleToggle}/>
             {loading ? <Loading />: null}
             {showSavedWords ? <SavedWords savedWords={savedWords} onSearch={handleSearch} onDelete={removeWord} /> : (success && apiResponse ? <SearchResults apiResponse={apiResponse} onSearch={handleSearch} /> : null)}
-            {error ? <Error/> : null}
+            {error && !showSavedWords ? <Error/> : null}
         </>
   )
 }

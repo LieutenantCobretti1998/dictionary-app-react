@@ -1,6 +1,5 @@
 import {createContext, useEffect, useState} from "react";
-import { read, utils, writeFile } from 'xlsx';
-import * as XLSX from "xlsx";
+import * as XLSX from 'xlsx';
 
 export const DataContext = createContext();
 
@@ -63,16 +62,28 @@ export const DataContextProvider = ({children}) => {
         const existingStorage = localStorage.getItem("local");
         if (existingStorage) {
             const currentData = JSON.parse(existingStorage);
-
+            const transformedData = currentData.flatMap(eachWord => {
+                let meanings = eachWord.meanings.map(meaning => {
+                    return meaning.definitions.map(def => def.definition);
+                });
+                meanings = meanings.map(firstMeaning => firstMeaning[0]).join("\n\n");
+                return {
+                    Word: eachWord.word,
+                    Pronunciation: eachWord.pronunciation,
+                    Meanings: meanings,
+                    WIKIURL: eachWord.url
+                }
+            });
             const wb = XLSX.utils.book_new();
-            const ws = XLSX.utils.json_to_sheet(currentData);
-            console.log(wb);
+            const ws = XLSX.utils.json_to_sheet(transformedData);
+            // console.log(wb);
             console.log(ws);
 
             XLSX.utils.book_append_sheet(wb, ws, "saved_words.xlsx");
+            XLSX.writeFile(wb, "saved_words.xlsx", { compression: true });
         }
     }
-    // localStorageToSheet();
+    localStorageToSheet();
 
     useEffect(() => {
         createLocalStorage();
