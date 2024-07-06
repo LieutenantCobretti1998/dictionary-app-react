@@ -1,6 +1,6 @@
 import "./header.css";
 import "../css/main.css";
-import {useCallback, useContext, useEffect, useRef, useState} from "react";
+import {memo, useCallback, useContext, useEffect, useRef, useState} from "react";
 import useDarkMode from "../customHooks/darkmode.jsx";
 import {DataContext} from "../context/data_context.jsx";
 // eslint-disable-next-line react/prop-types
@@ -169,4 +169,4 @@ function Header({onSearch, onToggle}) {
     )
 }
 
-export default Header;
+export default memo(Header);
