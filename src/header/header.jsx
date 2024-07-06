@@ -1,12 +1,12 @@
 import "./header.css";
 import "../css/main.css";
-import {useContext, useEffect, useRef, useState} from "react";
+import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import useDarkMode from "../customHooks/darkmode.jsx";
 import {DataContext} from "../context/data_context.jsx";
 // eslint-disable-next-line react/prop-types
 function Header({onSearch, onToggle}) {
 
-    const {data, saveLocalStorage, checkIsWordSaved, isWordSafe, unsaveWord} = useContext(DataContext);
+    const {data, saveLocalStorage, checkIsWordSaved, isWordSafe, unsaveWord, localStorageToSheet} = useContext(DataContext);
     console.log("render header");
     const handleClick = () => {
         if (data) {
@@ -15,12 +15,14 @@ function Header({onSearch, onToggle}) {
             } else {
                 saveLocalStorage(data);
             }
-
         }
     }
     // use state for app functioning
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [currentFont, setCurrentFont] = useState("Serif");
+    const [currentFont, setCurrentFont] = useState(() => {
+        const savedFont = localStorage.getItem('currentFont');
+        return savedFont || "Serif";
+    });
     const [darkMode, toggleDarkMode] = useDarkMode();
     const menuRef = useRef(null);
     const inputRef = useRef(null);
@@ -28,9 +30,11 @@ function Header({onSearch, onToggle}) {
         event.stopPropagation();
         setIsMenuOpen(!isMenuOpen);
     }
-    function fontChange(font) {
+    const fontChange = useCallback((font) => {
         const root = document.documentElement;
         setCurrentFont(font);
+        localStorage.setItem("currentFont", font);
+
         let fontValue;
         switch (font) {
             case "Serif":
@@ -38,14 +42,24 @@ function Header({onSearch, onToggle}) {
                 break;
             case "Sans Serif":
                 fontValue = 'Inter, sans-serif';
-                break
+                break;
             case "Mono":
                 fontValue = 'Inconsolata, monospace';
-                break
+                break;
+            default:
+                fontValue = 'Lora, serif';
         }
         root.style.setProperty("--font-family", fontValue);
         setIsMenuOpen(false);
-    }
+    }, []);
+
+    useEffect(() => {
+        const savedFont = localStorage.getItem("currentFont");
+        if (savedFont) {
+            fontChange(savedFont);
+        }
+    }, [fontChange]);
+
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === "Enter") {
@@ -95,6 +109,14 @@ function Header({onSearch, onToggle}) {
                         </g>
                     </svg>
                 <div className="header__mode-setter">
+                    {isWordSafe.length > 0 && (
+                        <svg onClick={localStorageToSheet} xmlns="http://www.w3.org/2000/svg" className="load-file" viewBox="0 0 512 512">
+                            <path
+                                d="M320 336h76c55 0 100-21.21 100-75.6s-53-73.47-96-75.6C391.11 99.74 329 48 256 48c-69 0-113.44 45.79-128 91.2-60 5.7-112 35.88-112 98.4S70 336 136 336h56M192 400.1l64 63.9 64-63.9M256 224v224.03"
+                                fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                                strokeWidth="32"/>
+                        </svg>
+                    )}
                     {data !==null && (
                         <svg onClick={handleClick} xmlns="http://www.w3.org/2000/svg" className="add-word" viewBox="0 0 512 512">
                             <path d="M352 48H160a48 48 0 00-48 48v368l144-128 144 128V96a48 48 0 00-48-48z" fill={data ? (checkIsWordSaved(data.word || isWordSafe) ? "var(--save-button)" : "none") : "none"}

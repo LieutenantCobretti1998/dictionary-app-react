@@ -13,17 +13,25 @@
 }
 
 .list {
-  column-count: 5;
-  column-gap: 2.5rem;
-  align-self: start;
+  align-self: center;
   list-style: none;
 
   & > li {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 3rem;
-    gap: 3.5rem;
+    gap: 50rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid var(--main-color); /* Add a line (change color as needed) */
+      margin-top: 50px; /* Add spacing between line and next item */
+    }
 
     & svg {
       width: 20px;

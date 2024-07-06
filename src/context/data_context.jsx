@@ -52,8 +52,7 @@ export const DataContextProvider = ({children}) => {
         let existingData = localStorage.getItem("local");
         if (existingData) {
             existingData = JSON.parse(existingData);
-            const words = existingData.map(object => object.word);
-            return words
+            return existingData.map(object => object.word)
         }
         return null;
     }
@@ -66,7 +65,7 @@ export const DataContextProvider = ({children}) => {
                 let meanings = eachWord.meanings.map(meaning => {
                     return meaning.definitions.map(def => def.definition);
                 });
-                meanings = meanings.map(firstMeaning => firstMeaning[0]).join("\n\n");
+                meanings = meanings.map(firstMeaning => firstMeaning[0]).join("\n");
                 return {
                     Word: eachWord.word,
                     Pronunciation: eachWord.pronunciation,
@@ -79,18 +78,30 @@ export const DataContextProvider = ({children}) => {
             // console.log(wb);
             console.log(ws);
 
+            const wrapText = (cell) => {
+                if (cell && cell.t === "s") {
+                    cell.s = { alignment: { wrapText: true } }
+                }
+            }
+
+            Object.keys(ws).forEach(key => {
+                if(key.startsWith("C") && key !== "C1") {
+                    wrapText(ws[key]);
+                }
+            })
+
             XLSX.utils.book_append_sheet(wb, ws, "saved_words.xlsx");
-            XLSX.writeFile(wb, "saved_words.xlsx", { compression: true });
+            XLSX.writeFile(wb, "saved_words.xlsx", { compression: true, cellStyles: true, bookSST: true });
         }
     }
-    localStorageToSheet();
+
 
     useEffect(() => {
         createLocalStorage();
     }, []);
 
     return (
-        <DataContext.Provider value={{data, setData,deleteWord, saveLocalStorage, checkIsWordSaved, unsaveWord, isWordSafe, setIsWordSafe, savedWords}}>{children}</DataContext.Provider>
+        <DataContext.Provider value={{data, setData, deleteWord, localStorageToSheet, saveLocalStorage, checkIsWordSaved, unsaveWord, isWordSafe, setIsWordSafe, savedWords}}>{children}</DataContext.Provider>
     )
 
 }
