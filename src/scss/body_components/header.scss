@@ -33,7 +33,7 @@
       top: 15px;
       bottom: 0;
       width: 20px;
-      background: url("../dictionary-web-app/starter-code/assets/images/icon-search.svg") no-repeat;;
+      background: url("../dictionary-web-app/starter-code/assets/images/icon-search.svg") no-repeat;
     }
     &__input {
       color: var(--search-text-color);
@@ -225,3 +225,71 @@
     color: var(--fill-add-button);
   }
 }
+
+@media (min-width: 400px) and (max-width: 500px) {
+  .header {
+    &__search {
+        font-size: 1.5rem;
+        &::before {
+          position: absolute;
+          content: "";
+          left: 76vw;
+          top: 15px;
+          bottom: 0;
+          width: 20px;
+          background: url("../dictionary-web-app/starter-code/assets/images/icon-search.svg") no-repeat;
+        }
+    }
+
+    &__icon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .load-file {
+    width: 20px;
+    height: 20px;
+  }
+
+}
+
+@media (min-width: 330px) and (max-width: 400px) {
+  .header {
+
+    &__mode-setter {
+      &__font-style {
+        font-size: 1.2rem;
+      }
+    }
+
+    &__search {
+      &::before {
+        position: absolute;
+        content: "";
+        left: 70vw;
+        top: 15px;
+        bottom: 0;
+        width: 20px;
+        background: url("../dictionary-web-app/starter-code/assets/images/icon-search.svg") no-repeat;
+      }
+
+      &__input {
+        font-size: 1.2rem;
+
+      }
+    }
+
+    &__icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .load-file {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+

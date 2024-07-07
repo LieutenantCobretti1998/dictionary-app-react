@@ -62,4 +62,33 @@
   margin-bottom: 1.5rem;
 }
 
+@media (min-width: 400px) and (max-width: 500px) {
+  .saved-words {
+    margin-top: 2.5rem;
+  }
+  .saved-words__title {
+    font-size: 2rem;
+  }
+  .list > li {
+    gap: 20rem;
+  }
+  .list > li:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+@media (min-width: 330px) and (max-width: 400px) {
+  .saved-words {
+    margin-top: 2.5rem;
+  }
+  .saved-words__title {
+    font-size: 2rem;
+  }
+  .list > li {
+    gap: 20rem;
+  }
+  .list > li:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
 /*# sourceMappingURL=saved_words.css.map */

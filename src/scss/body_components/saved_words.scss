@@ -72,3 +72,44 @@
 
   }
 }
+
+@media (min-width: 400px) and (max-width: 500px) {
+  .saved-words {
+    margin-top: 2.5rem;
+    &__title {
+      font-size: 2rem;
+    }
+  }
+
+  .list {
+
+    & > li {
+      gap: 20rem;
+
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 330px) and (max-width: 400px) {
+  .saved-words {
+    margin-top: 2.5rem;
+    &__title {
+      font-size: 2rem;
+    }
+  }
+
+  .list {
+
+    & > li {
+      gap: 20rem;
+
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
+
+  }
+}

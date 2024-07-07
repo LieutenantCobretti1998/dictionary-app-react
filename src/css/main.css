@@ -57,4 +57,29 @@ body {
   margin-inline: auto;
 }
 
+@media (min-width: 400px) and (max-width: 499px) {
+  html {
+    font-size: 55%;
+  }
+  body {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+  #root {
+    max-width: 420px;
+  }
+}
+@media (min-width: 330px) and (max-width: 400px) {
+  html {
+    font-size: 50%;
+  }
+  body {
+    padding: 1.5rem;
+    margin: 3rem;
+  }
+  #root {
+    max-width: 330px;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
