@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 3rem;
+    font-size: 2rem;
     gap: 50rem;
 
     &::after {
@@ -30,7 +30,7 @@
       display: block;
       width: 100%;
       border-bottom: 1px solid var(--main-color); /* Add a line (change color as needed) */
-      margin-top: 50px; /* Add spacing between line and next item */
+      margin-top: 35px; /* Add spacing between line and next item */
     }
 
     & svg {
@@ -73,6 +73,64 @@
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1920px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .saved-words {
+    margin-top: 2.5rem;
+    &__title {
+      font-size: 2.7rem;
+    }
+  }
+
+  .list {
+
+    & > li {
+      gap: 20rem;
+      font-size: 2.5rem;
+
+      & svg {
+        width: 20px;
+        height: 20px;
+      }
+
+
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .saved-words {
+    margin-top: 2.5rem;
+    &__title {
+      font-size: 3rem;
+    }
+  }
+
+  .list {
+
+    & > li {
+      gap: 20rem;
+      font-size: 3rem;
+
+      & svg {
+        width: 15px;
+        height: 15px;
+      }
+
+
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}
+
 @media (min-width: 400px) and (max-width: 500px) {
   .saved-words {
     margin-top: 2.5rem;
@@ -85,6 +143,13 @@
 
     & > li {
       gap: 20rem;
+      font-size: 2.2rem;
+
+      & svg {
+        width: 15px;
+        height: 15px;
+      }
+
 
       &:not(:last-child) {
         margin-bottom: 3rem;
@@ -105,11 +170,16 @@
 
     & > li {
       gap: 20rem;
+      font-size: 1.5rem;;
+
+      & svg {
+        width: 15px;
+        height: 15px;
+      }
 
       &:not(:last-child) {
-        margin-bottom: 3rem;
+        //margin-bottom: 3rem;
       }
     }
-
   }
 }

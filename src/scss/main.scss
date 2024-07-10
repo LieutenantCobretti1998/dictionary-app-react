@@ -61,7 +61,42 @@ body {
   margin-inline: auto;
 }
 
+@media (min-width: 1024px) and (max-width: 1920px) {
+  #root {
+    max-width: 720px;
+  }
 
+  body {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #root {
+    max-width: 620px;
+  }
+
+  body {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  html  {
+    font-size: 60%;
+  }
+
+  body {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+
+  #root {
+    max-width: 520px;
+  }
+}
 
 @media (min-width: 400px) and (max-width: 499px) {
   html {

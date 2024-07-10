@@ -129,7 +129,7 @@
   margin-bottom: 5rem;
 }
 .main__description__source h4 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: normal;
   color: var(--grey-meaning);
 }
@@ -137,11 +137,27 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--main-color);
 }
 
-@media (min-width: 330px) and (max-width: 400px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main__searchWord svg {
+    width: 80px;
+    height: 80px;
+  }
+  .main__searchWord__heading {
+    font-size: 4rem;
+  }
+  .main__description__container__meaning__explanation__examples li {
+    font-size: 1.8rem;
+  }
+  .main__description__source h4,
+  .main__description__source a {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 500px) and (max-width: 768px) {
   .main__searchWord svg {
     width: 50px;
     height: 50px;
@@ -150,11 +166,27 @@
     font-size: 4rem;
   }
   .main__description__container__meaning__explanation__examples li {
-    font-size: 1.3rem;
+    font-size: 2.5rem;
   }
   .main__description__source h4,
   .main__description__source a {
-    font-size: 1rem;
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 330px) and (max-width: 400px) {
+  .main__searchWord svg {
+    width: 50px;
+    height: 50px;
+  }
+  .main__searchWord__heading {
+    font-size: 3rem;
+  }
+  .main__description__container__meaning__explanation__examples li {
+    font-size: 1.7rem;
+  }
+  .main__description__source h4,
+  .main__description__source a {
+    font-size: 0.9rem;
   }
 }
 
