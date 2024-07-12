@@ -171,6 +171,20 @@
   }
 }
 
+@media (min-width: 2560px) {
+  .main {
+    &__searchWord {
+      svg {
+        width: 90px;
+        height: 90px;
+      }
+
+      &__heading {
+        font-size: 400rem;
+      }
+    }
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .main {
 

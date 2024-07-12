@@ -57,6 +57,30 @@ body {
   margin-inline: auto;
 }
 
+@media (min-width: 2560px) {
+  html {
+    font-size: 95%;
+  }
+  #root {
+    max-width: 1200px;
+  }
+  body {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  html {
+    font-size: 80%;
+  }
+  #root {
+    max-width: 950px;
+  }
+  body {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+}
 @media (min-width: 1024px) and (max-width: 1920px) {
   #root {
     max-width: 720px;
