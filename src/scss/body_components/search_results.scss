@@ -180,119 +180,124 @@
       }
 
       &__heading {
-        font-size: 400rem;
-      }
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .main {
-
-    &__searchWord {
-      svg {
-        width: 80px;
-        height: 80px;
-      }
-
-      &__heading {
         font-size: 4rem;
       }
     }
+  }
+}
 
-    &__description {
-      &__container {
-        &__meaning {
-          &__explanation {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .main {
 
-            &__examples {
-              li {
-                font-size: 1.8rem;
+      &__searchWord {
+        svg {
+          width: 80px;
+          height: 80px;
+        }
+
+        &__heading {
+          font-size: 4rem;
+        }
+      }
+
+      &__description {
+        &__container {
+          &__meaning {
+            &__explanation {
+
+              &__examples {
+                li {
+                  font-size: 1.8rem;
+                }
               }
             }
           }
         }
-      }
-      &__source {
-        h4,
-        a {
-          font-size: 1.3rem;
+
+        &__source {
+          h4,
+          a {
+            font-size: 1.3rem;
+          }
         }
       }
     }
   }
-}
 
-@media (min-width: 500px) and (max-width: 768px) {
-  .main {
+  @media (min-width: 500px) and (max-width: 768px) {
+    .main {
 
-    &__searchWord {
-      svg {
-        width: 50px;
-        height: 50px;
+      &__searchWord {
+        svg {
+          width: 50px;
+          height: 50px;
+        }
+
+        &__heading {
+          font-size: 4rem;
+        }
       }
 
-      &__heading {
-        font-size: 4rem;
-      }
-    }
+      &__description {
+        &__container {
+          &__meaning {
+            &__explanation {
 
-    &__description {
-      &__container {
-        &__meaning {
-          &__explanation {
-
-            &__examples {
-              li {
-                font-size: 2.5rem;
+              &__examples {
+                li {
+                  font-size: 2.5rem;
+                }
               }
             }
           }
         }
-      }
-      &__source {
-        h4,
-        a {
-          font-size: 1.3rem;
+
+        &__source {
+          h4,
+          a {
+            font-size: 1.3rem;
+          }
         }
       }
     }
   }
-}
 
 
-@media (min-width: 330px) and (max-width: 400px) {
-  .main {
+  @media (min-width: 330px) and (max-width: 400px) {
+    .main {
 
-    &__searchWord {
-      svg {
-        width: 50px;
-        height: 50px;
+      &__searchWord {
+        svg {
+          width: 50px;
+          height: 50px;
+        }
+
+        &__heading {
+          font-size: 3rem;
+        }
       }
 
-      &__heading {
-        font-size: 3rem;
-      }
-    }
+      &__description {
+        &__container {
+          &__meaning {
+            &__explanation {
 
-    &__description {
-      &__container {
-        &__meaning {
-          &__explanation {
-
-            &__examples {
-              li {
-                font-size: 1.7rem;
+              &__examples {
+                li {
+                  font-size: 1.7rem;
+                }
               }
             }
           }
         }
-      }
-      &__source {
-        h4,
-        a {
-          font-size: .9rem;
+
+        &__source {
+          h4,
+          a {
+            font-size: .9rem;
+          }
         }
       }
     }
   }
-}
+

@@ -141,6 +141,15 @@
   color: var(--main-color);
 }
 
+@media (min-width: 2560px) {
+  .main__searchWord svg {
+    width: 90px;
+    height: 90px;
+  }
+  .main__searchWord__heading {
+    font-size: 4rem;
+  }
+}
 @media (min-width: 768px) and (max-width: 1024px) {
   .main__searchWord svg {
     width: 80px;
