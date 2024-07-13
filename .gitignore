@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 dictionary-web-app-figma
-dist
+#dist
 dist-ssr
 *.local
 
