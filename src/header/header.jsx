@@ -4,10 +4,10 @@ import {memo, useCallback, useContext, useEffect, useRef, useState} from "react"
 import useDarkMode from "../customHooks/darkmode.jsx";
 import {DataContext} from "../context/data_context.jsx";
 // eslint-disable-next-line react/prop-types
-function Header({onSearch, onToggle}) {
+export default memo(function Header({onSearch, onToggle}) {
 
     const {data, saveLocalStorage, checkIsWordSaved, isWordSafe, unsaveWord, localStorageToSheet} = useContext(DataContext);
-    console.log("render header");
+    // console.log("render header");
     const handleClick = () => {
         if (data) {
             if (isWordSafe.some(item => item.word === data.word)) {
@@ -167,6 +167,4 @@ function Header({onSearch, onToggle}) {
             </div>
         </header>
     )
-}
-
-export default memo(Header);
+})

@@ -1,12 +1,12 @@
 import "./search_results.css";
-import {useContext, useEffect, useRef} from "react";
+import {memo, useContext, useEffect, useRef} from "react";
 import {DataContext} from "../context/data_context.jsx";
 
 
 // eslint-disable-next-line react/prop-types
 export default function SearchResults({apiResponse, onSearch}) {
     const {setData} = useContext(DataContext);
-    console.log("render main");
+    // console.log("render main");
     const audioRef = useRef(null);
     const entry = apiResponse[0];
     let meanings;

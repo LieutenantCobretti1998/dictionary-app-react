@@ -1,7 +1,8 @@
 import "./saved_words.css";
-export default function SavedWords({savedWords, onSearch, onDelete}) {
+import {memo} from "react";
+export default memo(function SavedWords({savedWords, onSearch, onDelete}) {
     const words = savedWords();
-    console.log("render saved words")
+    // console.log("render saved words")
     if(words.length > 0) {
         return (
             <div className="saved-words">
@@ -34,4 +35,4 @@ export default function SavedWords({savedWords, onSearch, onDelete}) {
         </div>
     )
 
-}
+})

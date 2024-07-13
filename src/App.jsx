@@ -14,13 +14,13 @@ function App() {
     const {setData, savedWords, isWordSafe, deleteWord} = useContext(DataContext);
 
     const removeWord = (event, word) => {
-        console.log(event);
+        // console.log(event);
         event.stopPropagation();
         if (isWordSafe.some(item => item.word === word)) {
             deleteWord(word);
             }
     }
-    console.log("render app");
+    // console.log("render app");
     const handleSearch = async (word) => {
         setLoading(true);
         setSuccess(false); // Reset success to false at start of new search

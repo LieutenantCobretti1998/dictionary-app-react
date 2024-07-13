@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from "react";
+import {createContext, useEffect, useMemo, useState} from "react";
 import * as XLSX from 'xlsx';
 
 export const DataContext = createContext();
@@ -9,7 +9,7 @@ export const DataContextProvider = ({children}) => {
         const localData = localStorage.getItem("local");
         return localData ? JSON.parse(localData) : [];
     });
-    console.log("render data context")
+    // console.log("render data context")
     const createLocalStorage = () => {
         const existingData = localStorage.getItem("local");
         if (!existingData) {
@@ -76,22 +76,22 @@ export const DataContextProvider = ({children}) => {
             const wb = XLSX.utils.book_new();
             const ws = XLSX.utils.json_to_sheet(transformedData);
             // console.log(wb);
-            console.log(ws);
+            // console.log(ws);
 
             const wrapText = (cell) => {
                 if (cell && cell.t === "s") {
-                    cell.s = { alignment: { wrapText: true } }
+                    cell.s = {alignment: {wrapText: true}}
                 }
             }
 
             Object.keys(ws).forEach(key => {
-                if(key.startsWith("C") && key !== "C1") {
+                if (key.startsWith("C") && key !== "C1") {
                     wrapText(ws[key]);
                 }
             })
 
             XLSX.utils.book_append_sheet(wb, ws, "saved_words.xlsx");
-            XLSX.writeFile(wb, "saved_words.xlsx", { compression: true, cellStyles: true, bookSST: true });
+            XLSX.writeFile(wb, "saved_words.xlsx", {compression: true, cellStyles: true, bookSST: true});
         }
     }
 
@@ -100,8 +100,20 @@ export const DataContextProvider = ({children}) => {
         createLocalStorage();
     }, []);
 
-    return (
-        <DataContext.Provider value={{data, setData, deleteWord, localStorageToSheet, saveLocalStorage, checkIsWordSaved, unsaveWord, isWordSafe, setIsWordSafe, savedWords}}>{children}</DataContext.Provider>
-    )
+    const contextValue = useMemo(() => ({
+        data,
+        setData,
+        deleteWord,
+        localStorageToSheet,
+        saveLocalStorage,
+        checkIsWordSaved,
+        unsaveWord,
+        isWordSafe,
+        setIsWordSafe,
+        savedWords
+    }), [data, isWordSafe, checkIsWordSaved])
 
+    return (
+        <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
+    )
 }
