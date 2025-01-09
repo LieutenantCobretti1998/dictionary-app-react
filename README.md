@@ -14,18 +14,27 @@ In this project I tried to understand how react works behind the scenes, how imp
 4. Creating a responsive and accessible UI.
 
 **Tech Stack**
+
   **Frontend:**
       React: Used to build the user interface with reusable components and efficient state management.
+      
   **API Integration:**
+  
     Free Dictionary API: Fetched definitions, phonetics, and audio files for searched words in real time.
+    
   **Development Tools:**
+  
     Vite.js: A modern build tool for faster development and hot module replacement.
     WebStorm: Code editor with extensions for enhanced productivity.
     Git: Version control to track changes and collaborate.
     GitHub: Repository hosting for code management and sharing.
+    
   **Deployment:**
+  
     Netlify: Hosted the live version of the application with continuous deployment from GitHub.
+    
   **Others:**
+  
     Responsive Design Techniques: Ensured the app works seamlessly on all screen sizes.
     Browser Compatibility: Verified consistent performance across major browsers.
 
